@@ -57,6 +57,10 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
     return filterOutputList;
   }
 
+  Stream<List<T>> get streamOfFilteredItems {
+    return stream;
+  }
+
   @override
   void reload() {}
 }
