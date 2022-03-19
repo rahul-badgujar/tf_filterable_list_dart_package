@@ -28,19 +28,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Create instance of TfFilterableList with template parameter matching
+  // the data type of items list is going to hold
   final numbersList = TfFilterableList<int>();
 
   @override
   void initState() {
     super.initState();
+    // Must initialize the instance before using.
     numbersList.init();
-    // let us add 100 numbers to the list
+    // Let us add 100 numbers to the list.
     numbersList.addItems(List<int>.generate(100, (index) => index + 1));
+    // Applying the changes.
     numbersList.apply();
   }
 
   @override
   void dispose() {
+    // Make sure to dispose the instance after use.
     numbersList.dispose();
     super.dispose();
   }
@@ -49,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
+      // The floating button is provided to add 10 items to numbers list.
       floatingActionButton: FloatingActionButton(
         child: const Text(
           '+10',
@@ -59,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           final newItemsToAdd = List.generate(
               10, (index) => numbersList.allItems.last + index + 1);
+          // Add new items to the list.
           numbersList.addItems(newItemsToAdd);
+          // Applying to notify listeners and update UI.
           numbersList.apply();
         },
       ),
@@ -68,6 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
             children: [
               Expanded(
+                // To provide input for divisor
                 child: TextField(
                   decoration: const InputDecoration(
                     labelText: 'Enter divisor',
@@ -77,7 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   onSubmitted: (input) {
                     final divisor = int.tryParse(input);
                     if (divisor != null) {
+                      // Update the filter to support new divisor
                       numbersList.setFilter((item) => item % divisor == 0);
+                      // Apply to reflect the changes in UI.
                       numbersList.apply();
                     }
                   },
@@ -86,7 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
               InkWell(
                 child: const Icon(Icons.cancel),
                 onTap: () {
+                  // Clear all the items.
                   numbersList.clearFilter();
+                  // Apply to reflect changes in UI.
                   numbersList.apply();
                 },
               ),

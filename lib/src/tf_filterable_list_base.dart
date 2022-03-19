@@ -35,9 +35,9 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
     return _activeFilter;
   }
 
-  /// Add more items to [allItems] list.
+  /// Add more items to `allItems` list.
   ///
-  /// This method should be followed by a call to apply()
+  /// This method should be followed by a call to `apply()`
   /// to apply current filter on newly added items and notify the listeners.
   void addItems(List<T> newItemsList) {
     _allItems.addAll(newItemsList);
@@ -45,7 +45,7 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
 
   /// Clears the list of all items. Also resulting in clearing of the filtered list as well.
   ///
-  /// This method should be followed by a call to apply()
+  /// This method should be followed by a call to `apply()`
   /// to notify the listeners about clearing of items.
   void clearAllItems() {
     _allItems.clear();
@@ -54,7 +54,7 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
   /// Set a new filter for filtering all the items.
   ///
   /// If you wish that list should be filtered with this new filter,
-  /// this method call should be followed by apply() to apply the filter and notify listeners.
+  /// this method call should be followed by `apply()` to apply the filter and notify listeners.
   void setFilter(TfListItemFilter filter) {
     _activeFilter = filter;
   }
@@ -78,7 +78,8 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
   /// Clears the current active filter.
   ///
   /// If you wish that clearing of filter should reflect filtered list,
-  /// then this method call should be followed by apply() to update the filtered list and notify listeners.
+  /// then this method call should be followed by `apply()` to update the
+  /// filtered list and notify listeners.
   void clearFilter() {
     _activeFilter = null;
   }
