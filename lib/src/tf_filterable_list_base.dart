@@ -75,8 +75,8 @@ class TfFilterableList<T> extends TfDataStreamer<List<T>> {
     addData(_filteredItems);
   }
 
-  // Clears the current filter.
-
+  /// Clears the current active filter.
+  ///
   /// If you wish that clearing of filter should reflect filtered list,
   /// then this method call should be followed by apply() to update the filtered list and notify listeners.
   void clearFilter() {
