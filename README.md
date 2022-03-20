@@ -1,39 +1,85 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# tf_filterable_list
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+A list having capabilities to filter the items for given filter. Supports listening to the filtered list.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+## Supported Dart Versions
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+**Dart SDK version ">=2.15.1 <3.0.0"**
 
-## Features
+## Installation
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Add the Package
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  tf_filterable_list:
+    git:
+      url: https://github.com/rahul-badgujar/tf_filterable_list_dart_package.git
+      ref: main
 ```
 
-## Additional information
+## How to use
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+Import the package in your dart file
+
+```dart
+import 'package:tf_filterable_list/tf_filterable_list.dart';
+```
+
+### Creating and Initializing Instance
+
+```dart
+// Creating an instance of TfFilterableList.
+// Provide template parameter T matching the data type 
+// of items the filterable list is going to store.
+final instance = TfFilterableList<T>();
+// MUST initialize the instance before using it.
+instance.init();
+```
+
+### Manipulating Items Lists
+
+```dart
+// ** To access different items lists **
+
+// To access the list of all items in the list.
+print(instance.allItems);
+// To access the list of all items which satisfies the current filter applied.
+print(instance.filteredItems);
+
+// ** To add new items to all items list **
+
+// List of items to add.
+final newItemsToAdd=<T>[];  
+// Add the items.
+instance.addItems(newItemsToAdd);
+// Call apply() to commit the changes and update filtered list.
+// This also notifies the listeners listening to filtered list changes.
+instance.apply();
+
+// ** To clear all the items **
+ 
+// Clear the all items list.
+instance.clearAllItema();
+// Call apply() to commit the changes and update filtered list.
+// This also notifies the listeners listening to filtered list changes.
+instance.apply();
+```
+
+### Manipulating the active filter
+
+```dart
+// ** Accessing the active filter **
+
+// Get access to active filter
+TfListItemFilter filter=instance.activeFilter;
+
+
+```
+
+### Disposing the Instance
+
+```dart
+// A good practice is to dispose the instance after use.
+instance.dispose();
+```

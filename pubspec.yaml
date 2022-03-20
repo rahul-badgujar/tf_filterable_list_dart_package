@@ -1,5 +1,5 @@
 name: tf_filterable_list
-description: A starting point for Dart libraries or applications.
+description: A list having capabilities to filter the items for given filter. Supports listening to the filtered list.
 version: 1.0.0
 publish_to: none
 homepage: https://github.com/rahul-badgujar/tf_filterable_list_dart_package.git
