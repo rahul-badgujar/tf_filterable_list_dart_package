@@ -30,11 +30,19 @@ import 'package:tf_filterable_list/tf_filterable_list.dart';
 
 ```dart
 // Creating an instance of TfFilterableList.
-// Provide template parameter T matching the data type 
-// of items the filterable list is going to store.
+// Provide template parameter T matching the data type of items the filterable list is going to store.
 final instance = TfFilterableList<T>();
 // MUST initialize the instance before using it.
 instance.init();
+```
+
+### To listen to changes in filtered list
+
+```dart
+// Subscribe the stream to listen to the changes in filtered list.
+instance.streamOfFilteredItems.listen((filteredListEvent) {
+    print(filteredListEvent);
+});
 ```
 
 ### Manipulating Items Lists
@@ -69,12 +77,30 @@ instance.apply();
 ### Manipulating the active filter
 
 ```dart
-// ** Accessing the active filter **
+// Accessing the active filter
+TfListItemFilter? filter=instance.activeFilter;
 
-// Get access to active filter
-TfListItemFilter filter=instance.activeFilter;
+// ** Set/Update active filter **
 
+// Provide new active filter
+instance.setFilter((T item){
+    // provide logic for filtering the item
+    // If returned true => item has passed the filter
+    // If returned false => item fails the filter
+    return true;
+});
+// Call apply() to filtered the items with new filter provided above.
+// Also, to notify listeners listening to the filtered list changes.
+instance.apply();
 
+// ** Clearing the active filter **
+
+// Clear the active filter
+instance.clearFilter();
+// Call apply() to update filtered list for cleared filter.
+// Clearing the filter makes filtered list same as all items
+// Also, to notify listeners listening to the filtered list changes.
+instance.apply();
 ```
 
 ### Disposing the Instance
