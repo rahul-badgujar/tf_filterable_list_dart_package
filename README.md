@@ -4,7 +4,7 @@ A list having capabilities to filter the items for given filter. Supports listen
 
 ## Supported Dart Versions
 
-**Dart SDK version ">=2.15.1 <3.0.0"**
+Dart SDK version ">=2.15.1 <3.0.0"
 
 ## Installation
 
@@ -109,3 +109,7 @@ instance.apply();
 // A good practice is to dispose the instance after use.
 instance.dispose();
 ```
+
+## Support for Useful Flutter Widgets
+
+A Flutter Extension of this Dart Package [tf_filterable_list_flutter_extension package](https://github.com/rahul-badgujar/tf_filterable_list_dart_package.git) is designed to provide support of Useful Widgets you can use to pace up your UI Building.
