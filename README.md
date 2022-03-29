@@ -112,4 +112,4 @@ instance.dispose();
 
 ## Support for Useful Flutter Widgets
 
-A Flutter Extension of this Dart Package [tf_filterable_list_flutter_extension package](https://github.com/rahul-badgujar/tf_filterable_list_dart_package.git) is designed to provide support of Useful Widgets you can use to pace up your UI Building.
+A Flutter Extension of this Dart Package [tf_filterable_list_flutter_extension package](https://github.com/rahul-badgujar/tf_filterable_list_flutter_extension_package#readme) is designed to provide support of Useful Widgets you can use to pace up your UI Building.
