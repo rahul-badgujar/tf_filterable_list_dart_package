@@ -68,7 +68,7 @@ instance.apply();
 // ** To clear all the items **
  
 // Clear the all items list.
-instance.clearAllItema();
+instance.clearAllItems();
 // Call apply() to commit the changes and update filtered list.
 // This also notifies the listeners listening to filtered list changes.
 instance.apply();
